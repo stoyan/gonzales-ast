@@ -1,0 +1,16 @@
+{
+  "name": "gonzales-ast",
+  "version": "0.0.1",
+  "description": "Gonzales' CSS AST traversal",
+  "keywords": [
+    "css",
+    "transform",
+    "ast"
+  ],
+  "author": "Stoyan <ssttoo@ymail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stoyan/gonzales-ast.git"
+  },
+  "main": "index"
+}
