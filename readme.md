@@ -78,8 +78,8 @@ See the `examples` directory for an examples of visitors that add, remove and ch
 
 ## Other stuffs
 
-https://github.com/css/gonzales - Gonzales itself
-https://github.com/tonyganch/gonzales-pe - Fork of Gonzales that also supports preprocessors
-https://github.com/csscomb/csscomb.js/ - Formatter on top of -pe. No AST-to-AST, only AST-to-string
-https://github.com/ai/postcss/ - Another parser, source maps and more fun. Simpler AST.
-https://github.com/visionmedia/rework - like above
+ - https://github.com/css/gonzales - Gonzales itself
+ - https://github.com/tonyganch/gonzales-pe - Fork of Gonzales that also supports preprocessors
+ - https://github.com/csscomb/csscomb.js/ - Formatter on top of -pe. No AST-to-AST, only AST-to-string
+ - https://github.com/ai/postcss/ - Another parser, source maps and more fun. Simpler AST.
+ - https://github.com/visionmedia/rework - like above
