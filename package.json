@@ -1,6 +1,6 @@
 {
   "name": "gonzales-ast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gonzales' CSS AST traversal",
   "keywords": [
     "css",
@@ -12,5 +12,8 @@
     "type": "git",
     "url": "git://github.com/stoyan/gonzales-ast.git"
   },
-  "main": "index"
+  "main": "index",
+  "dependencies": {
+    "gonzales": "*"
+  }
 }
