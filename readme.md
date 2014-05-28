@@ -76,6 +76,10 @@ A visitor may provide an optional `test()` method which is a lightweight way to 
 
 See the `examples` directory for an examples of visitors that add, remove and change nodes.
 
+## UI
+
+To admire the AST that Gonzales produces, [check this out](http://www.phpied.com/files/gonzo/test.html).
+
 ## Other stuffs
 
  - https://github.com/css/gonzales - Gonzales itself
