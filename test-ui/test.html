@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>gonzales-ast playarea</title>
+  <script src="bundle.js"></script>
+  <script src="prism.js"></script>
+  <link rel="stylesheet" href="prism.css">
+  <style>
+  #css, #err {
+    font: 16px Consolas, Monaco, 'Andale Mono', monospace;
+  }
+  #css {
+    width: 100%;
+    height: 50px;
+  }
+  </style>
+</head>
+<body>
+  <pre><textarea id="css" placeholder="feed me css"></textarea></pre>
+  <div style="color: red" id="err"></div>
+  <pre><code class="language-javascript" id="code"></code></pre>
+
+  <script>
+  css.oninput = function() {
+    err.innerHTML = '';
+    try {
+      var res = parse(css.value);
+    } catch (e) {
+      err.innerHTML = "lolwtfbbq: " + e.message;
+    }
+
+    code.innerHTML = res;
+    Prism.highlightElement(code);
+  };
+  onload = function() {
+    css.focus();
+  };
+  </script>
+</body>
+</html>
