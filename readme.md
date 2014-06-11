@@ -78,7 +78,7 @@ See the `examples` directory for an examples of visitors that add, remove and ch
 
 ## UI
 
-To admire the AST that Gonzales produces, [check this out](http://www.phpied.com/files/gonzo/test.html).
+To admire the AST that Gonzales produces, [check this out](http://ast.csspatterns.com).
 
 ## Other stuffs
 
