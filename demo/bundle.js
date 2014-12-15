@@ -1,40 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var gonzales = require('gonzales');
-
-exports.parse = gonzales.srcToCSSP;
-exports.toCSS = gonzales.csspToSrc;
-exports.toTree = gonzales.csspToTree;
-exports.traverse = require('./lib/traverse.js');
-},{"./lib/traverse.js":2,"gonzales":5}],2:[function(require,module,exports){
-function tree(node, visitor) {
-  if (!Array.isArray(node)) {
-    return node;
-  }
-
-  if (visitor.test && visitor.test(node[0], node[1])) {
-    node = visitor.process(node);
-    if (!node) {
-      return;
-    }
-  }
-
-  var res = [node[0]];
-  for (var i = 1; i < node.length; i++) {
-    var n = tree(node[i], visitor);
-    n && res.push(n);
-  }
-  return res;
-}
-
-
-module.exports = function traverse (ast, visitors) {
-  visitors.forEach(function(visitor) {
-    ast = tree(ast, visitor);
-  });
-  return ast;
-};
-
-},{}],3:[function(require,module,exports){
 // version: 1.0.0
 
 function csspToSrc(tree, hasInfo) {
@@ -138,7 +102,7 @@ function csspToSrc(tree, hasInfo) {
 }
 exports.csspToSrc = csspToSrc;
 
-},{}],4:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 var srcToCSSP = (function() {
 var TokenType = {
     StringSQ: 'StringSQ',
@@ -2435,7 +2399,7 @@ var getCSSPAST = (function() {
 }());
 exports.srcToCSSP = srcToCSSP;
 
-},{}],5:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 // CSSP
 
 exports.srcToCSSP = require('./gonzales.cssp.node.js').srcToCSSP;
@@ -2460,13 +2424,60 @@ function dummySpaces(num) {
     return '                                                  '.substr(0, num * 2);
 }
 
-},{"./cssp.translator.node.js":3,"./gonzales.cssp.node.js":4}],6:[function(require,module,exports){
-var gonzo = require('gonzales-ast');
+},{"./cssp.translator.node.js":1,"./gonzales.cssp.node.js":2}],4:[function(require,module,exports){
+var gonzo = require('../index.js');
 
 parse = function(css) {
   var ast = gonzo.parse(css);
-  return gonzo.toTree(ast);
+  return gonzo.pretty(ast);
 }
 
 
-},{"gonzales-ast":1}]},{},[6])
+},{"../index.js":5}],5:[function(require,module,exports){
+var gonzales = require('gonzales');
+var traverse = require('./lib/traverse.js');
+var utils = require('./lib/utils.js');
+
+exports.parse = gonzales.srcToCSSP;
+exports.toCSS = gonzales.csspToSrc;
+exports.toTree = gonzales.csspToTree;
+exports.traverse = traverse;
+exports.same = utils.same;
+exports.pretty = function(ast) {
+  return JSON.stringify(ast, '', 2);
+};
+},{"./lib/traverse.js":6,"./lib/utils.js":7,"gonzales":3}],6:[function(require,module,exports){
+function tree(node, visitor) {
+  if (!Array.isArray(node)) {
+    return node;
+  }
+
+  if (visitor.test && visitor.test(node[0], node[1])) {
+    node = visitor.process(node);
+    if (!node) {
+      return;
+    }
+  }
+
+  var res = [node[0]];
+  for (var i = 1; i < node.length; i++) {
+    var n = tree(node[i], visitor);
+    n && res.push(n);
+  }
+  return res;
+}
+
+
+module.exports = function traverse (ast, visitors) {
+  visitors.forEach(function(visitor) {
+    ast = tree(ast, visitor);
+  });
+  return ast;
+};
+
+},{}],7:[function(require,module,exports){
+exports.same = function same (ast1, ast2) {
+  return JSON.stringify(ast1) === JSON.stringify(ast2);
+};
+
+},{}]},{},[4])

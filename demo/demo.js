@@ -1,7 +1,7 @@
-var gonzo = require('gonzales-ast');
+var gonzo = require('../index.js');
 
 parse = function(css) {
   var ast = gonzo.parse(css);
-  return gonzo.toTree(ast);
+  return gonzo.pretty(ast);
 }
 

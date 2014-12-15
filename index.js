@@ -7,3 +7,6 @@ exports.toCSS = gonzales.csspToSrc;
 exports.toTree = gonzales.csspToTree;
 exports.traverse = traverse;
 exports.same = utils.same;
+exports.pretty = function(ast) {
+  return JSON.stringify(ast, '', 2);
+};
